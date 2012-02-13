@@ -1,7 +1,12 @@
 Miniblog::Application.routes.draw do
+  devise_for :users, :controllers => {
+    :regstrations => "users/registrations",
+    :sessions     => "users/sessions"
+  }
+
   get "home" => "pages#home"
 
-  get "about =>" "pages#about"
+  get "about" => "pages#about"
 
   get "privacy" => "pages#privacy"
 
