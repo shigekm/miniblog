@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :bio
+  #deviseの認証機能の設定
   validates :username, :presence => true
   validates :username, :uniqueness => { :case_sensitive => false }
   validates :username, :format => { :with => /^[A-Za-z][0-9A-Za-z_\-]+$/ }
@@ -15,4 +16,6 @@ class User < ActiveRecord::Base
     params.delete(:current_password)
     self.update_without_password(params)
   end
+  #tweetModelの作成　p36
+  has_many :tweets, :dependent => :destroy
 end

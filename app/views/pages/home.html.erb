@@ -1,2 +1,21 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div id="tweets">
+  <% if user_signed_in? %>
+  
+    <%= form_for(Tweet.new, :remote => true) do |f| %>
+    <%= f.text_area :content, :size => "60x3" %>
+    <%= f.submit "Tweet", :disable_with => "Tweeting..." %>
+    <% end %>
+  
+  <% end %>
+
+  <% @tweets.each do |tweet| %>
+    <div>
+      <%= tweet.user.username %>
+      <%= tweet.content %>
+      <small>(<%= time_ago_in_words(tweet.created_at) %> ago)</small>
+      <% if user_signed_in? && current_user == tweet.user %>
+        <%= linke_to "Delete", tweet, :method => "delete" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
