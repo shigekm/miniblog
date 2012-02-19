@@ -1,7 +1,7 @@
 class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.json
-  before_filter :authenticate_user!, only => [:create, :destroy]
+  before_filter :authenticate_user!, :only => [:create, :destroy]
   
 
 #create destroy 以外のアクションは消去　routesにresousesメソッドを定義。
@@ -23,3 +23,4 @@ class TweetsController < ApplicationController
     @tweet.destroy
     redirect_to root_url
   end
+end

@@ -1,5 +1,5 @@
 Miniblog::Application.routes.draw do
-
+  
   resources :tweets, :only => [:create, :destroy]
 
   devise_for :users, :controllers => {

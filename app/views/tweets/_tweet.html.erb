@@ -1,0 +1,9 @@
+<div>
+  <%= tweet.user.username %>
+  <%= tweet.content %>
+  <small>(<%= time_ago_in_words(tweet.created_at) %> ago)</small>
+  <% if user_signed_in? && current_user == tweet.user %>
+    <%= link_to "Delete", tweet, :method => "delete" %>
+  <% end %>
+<!--  <%= link_to_favorite(tweet) %> -->
+</div>
