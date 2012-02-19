@@ -11,6 +11,15 @@ gem 'json'
 
 gem 'rake', '0.9.2'
 
+#ror0205 p103のHeroku設定を参照
+group :deveropment, :test do
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
+  gem 'thin'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
